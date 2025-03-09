@@ -3,9 +3,9 @@ import React from "react";
 export default function WeatherInfo(props) {
   return (
     <div className="WeatherInfo">
-      <div id="city">
-        {props.data.city}, {props.data.country}
-      </div>
+      <div id="city">{props.data.city} </div>
+      <div id="country">{props.data.country}</div>
+      <br />
 
       <div className="row">
         <div className="col-4">

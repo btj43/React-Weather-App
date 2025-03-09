@@ -59,8 +59,16 @@
   border-color: #684870;
 }
 
+.form-control {
+  margin: 5px;
+}
+
 #city {
   font-size: 35px;
+}
+
+#country {
+  font-size: 20px;
 }
 
 #date {

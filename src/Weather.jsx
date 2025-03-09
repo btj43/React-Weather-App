@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
-import SearchEngine from "./SearchEngine";
 import WeatherInfo from "./WeatherInfo";
 
-export default function Weather() {
+export default function Weather(props) {
   const [ready, setReady] = useState(false);
   const [weatherData, setWeatherData] = useState({});
+  const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
     console.log(response.data);
     const now = new Date();
@@ -15,7 +16,6 @@ export default function Weather() {
     )
       .toString()
       .padStart(2, "0")}.${now.getFullYear()}`;
-    //setTemperature(response.data.temperature.current);
     setWeatherData({
       city: response.data.city,
       country: response.data.country,
@@ -30,39 +30,51 @@ export default function Weather() {
     setReady(true);
   }
 
+  function search() {
+    //city
+    const apiKey = "c49tafo312b920a246236ebd70ea80ab";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
   if (ready) {
     return (
       <div className="weather-app">
         <h1 className="title">World Weather App</h1>
-        <SearchEngine />
-        <form id="location-form">
-          <input
-            type="submit"
-            className="btn btn-primary w-100"
-            value="📌 Location "
-            id="location"
-          />
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-9">
+              <input
+                type="search"
+                placeholder="Enter a city.."
+                className="form-control"
+                autoFocus="on"
+                onChange={handleCityChange}
+              />
+            </div>
+            <div className="col-3">
+              <input
+                type="submit"
+                value="Search"
+                className="btn btn-primary w-100"
+              />
+            </div>
+          </div>
         </form>
+        <br />
         <WeatherInfo data={weatherData} />
-        <div className="git">
-          <a
-            href="https://github.com/btj43/Vanilla-Weather-App"
-            id="link"
-            target="_blank"
-          >
-            Open Source Code
-          </a>
-          by Beth Jones
-        </div>
       </div>
     );
   } else {
-    console.log("loading...");
-    const apiKey = "c49tafo312b920a246236ebd70ea80ab";
-    let city = "London";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading...";
   }
 }
