@@ -90,6 +90,12 @@
 }
 
 .units {
+  font-size: 20px;
+  text-decoration: none;
+  color: navy;
+}
+
+.hidden-unit {
   font-size: 15px;
   text-decoration: none;
   color: #8d6298;
