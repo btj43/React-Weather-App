@@ -14,7 +14,7 @@ export default function App() {
             target="_blank"
           >
             Open Source Code
-          </a>
+          </a>{" "}
           by Beth Jones
         </footer>
       </div>

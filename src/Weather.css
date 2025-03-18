@@ -82,6 +82,7 @@
 
 #iconImg {
   margin: -20px;
+  height: 120px;
 }
 #temp {
   font-size: 40px;
@@ -128,4 +129,34 @@
 
 #link {
   color: #8d6298;
+}
+
+/* Forcast styling */
+
+.Weatherforecast-temp-high {
+  font-weight: bold;
+}
+
+.Weatherforecast-temp-low {
+  opacity: 0.8;
+}
+
+.forecast-icon {
+  height: auto;
+  width: 70px;
+  margin: -10px;
+}
+
+.WeatherForecast-day {
+  font-weight: bold;
+}
+
+.WeatherForecast-description {
+  font-size: 12px;
+}
+
+#forecastIcon {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
 }

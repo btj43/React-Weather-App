@@ -6,23 +6,16 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <div id="city">{props.data.city} </div>
       <div id="country">{props.data.country}</div>
+      <div id="date">{props.data.date}</div>
       <br />
-
       <div className="row">
-        <div className="col-4">
-          <div id="date">{props.data.date}</div>
+        <div className="col-3"></div>
+        <div className="col-3">
+          <img src={props.data.imgUrl} alt="weather image" id="iconImg" />
           <div id="description">{props.data.description}</div>
         </div>
-
-        <div className="col-2" id="icon">
-          <img src={props.data.imgUrl} alt="clear" id="iconImg" />
-        </div>
-
         <div className="col-3">
           <WeatherTemperature celcius={props.data.temperature} />
-        </div>
-
-        <div className="col-3">
           <ul className="weather-info">
             <li>
               Humidity: <span id="humidity">{props.data.humidity}</span>%
@@ -32,9 +25,8 @@ export default function WeatherInfo(props) {
             </li>
           </ul>
         </div>
+        <div className="col-3"></div>
       </div>
-      <br />
-      <div className="weather-forecast" id="weather-forecast"></div>
     </div>
   );
 }
