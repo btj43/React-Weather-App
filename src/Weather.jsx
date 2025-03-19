@@ -10,7 +10,6 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    console.log(response.data);
     const now = new Date();
     const formattedDate = `${now.getDate().toString().padStart(2, "0")}.${(
       now.getMonth() + 1
@@ -31,7 +30,6 @@ export default function Weather(props) {
   }
 
   function search() {
-    //city
     const apiKey = "c49tafo312b920a246236ebd70ea80ab";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
@@ -54,7 +52,7 @@ export default function Weather(props) {
             <div className="col-9">
               <input
                 type="search"
-                placeholder="Enter a city.."
+                placeholder="Enter a city..."
                 className="form-control"
                 autoFocus="on"
                 onChange={handleCityChange}
@@ -64,7 +62,7 @@ export default function Weather(props) {
               <input
                 type="submit"
                 value="Search"
-                className="btn btn-primary w-100"
+                className="btn btn-primary w-100 submit-button"
               />
             </div>
           </div>

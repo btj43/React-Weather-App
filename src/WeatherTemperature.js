@@ -16,7 +16,7 @@ export default function WeatherTemperature(props) {
       <div className="temperature">
         <span id="temp">{Math.round(props.celcius)}</span>
         <span className="units">
-          °C
+          °C{" "}
           <a id="faren" href="/" onClick={convertToFar} className="hidden-unit">
             °F
           </a>
@@ -35,7 +35,7 @@ export default function WeatherTemperature(props) {
             onClick={convertToCelcius}
             className="hidden-unit"
           >
-            °C
+            °C{" "}
           </a>
           °F
         </span>

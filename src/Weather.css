@@ -1,12 +1,19 @@
+:root {
+  --primary-color: #8d6298;
+  --dark-color: #362d38;
+  --light-purple: #eddfe9;
+  --hover-color: #684870;
+}
+
 .weather-app {
   max-width: 700px;
   padding: 10px;
-  border: 1px solid #8d6298;
+  border: 1px solid var(--primary-color);
   border-radius: 10px;
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 20px;
   padding-bottom: 5px;
-  color: #362d38;
+  color: var(--dark-color);
   background: linear-gradient(
     180.3deg,
     rgb(214, 224, 255) 37.2%,
@@ -15,7 +22,9 @@
 }
 
 .title {
-  color: #8d6298;
+  font-size: 45px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
 }
 
 #search-form {
@@ -23,22 +32,22 @@
 }
 
 #searchcity {
-  border-color: #8d6298;
+  border-color: var(--primary-color);
 }
 
 .city-input {
-  background-color: #eddfe9;
-  border-color: #8d6298;
+  background-color: var(--light-purple);
+  border-color: var(--primary-color);
 }
 
 .searchbutton {
-  background-color: #8d6298;
-  border-color: #8d6298;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 #searchbutton:hover {
-  background-color: #684870;
-  border-color: #684870;
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
 }
 
 #location-form {
@@ -49,18 +58,14 @@
 }
 
 #location {
-  background-color: #8d6298;
-  border-color: #8d6298;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   font-size: 12px;
 }
 
 #Location:hover {
-  background-color: #684870;
-  border-color: #684870;
-}
-
-.form-control {
-  margin: 5px;
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
 }
 
 #city {
@@ -93,13 +98,13 @@
 .units {
   font-size: 20px;
   text-decoration: none;
-  color: navy;
+  color: var(--dark-color);
 }
 
 .hidden-unit {
   font-size: 15px;
   text-decoration: none;
-  color: #8d6298;
+  color: var(--primary-color);
 }
 
 .weather-info {
@@ -123,12 +128,11 @@
 .git {
   font-size: 12px;
   text-decoration: none;
-  color: #8d6298;
-  padding-top: 15px;
+  color: var(--primary-color);
 }
 
 #link {
-  color: #8d6298;
+  color: var(--primary-color);
 }
 
 /* Forcast styling */
@@ -159,4 +163,19 @@
   display: flex;
   margin: 0 auto;
   justify-content: center;
+}
+
+.weatherForecastDay {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 35px;
+  }
+
+  .submit-button {
+    padding: 2px;
+    margin: 8px;
+  }
 }

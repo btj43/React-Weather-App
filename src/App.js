@@ -5,8 +5,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather defaultCity="New York" />
-
+        <Weather defaultCity="Sydney" />
         <footer className="git">
           <a
             href="https://github.com/btj43/Vanilla-Weather-App"

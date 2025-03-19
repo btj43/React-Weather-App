@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Weather.css";
 import WeatherForecastDay from "./WeatherForecastDay";
@@ -7,10 +7,19 @@ export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
 
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.data.city]);
+
   function handleResponse(response) {
-    console.log(response.data);
     setForecast(response.data.daily);
     setLoaded(true);
+  }
+
+  function loadForecastApi() {
+    const apiKey = "c49tafo312b920a246236ebd70ea80ab";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.data.city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (loaded) {
@@ -36,14 +45,7 @@ export default function WeatherForecast(props) {
       </div>
     );
   } else {
-    function forecastApi() {
-      //city
-      const apiKey = "c49tafo312b920a246236ebd70ea80ab";
-      let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.data.city}&key=${apiKey}`;
-      console.log(apiUrl);
-      axios.get(apiUrl).then(handleResponse);
-    }
-    forecastApi();
+    loadForecastApi();
     return null;
   }
 }
